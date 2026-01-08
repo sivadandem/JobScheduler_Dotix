@@ -1,5 +1,5 @@
 const express = require('express');
-const pool = require('../databaseconfig');
+const pool = require('../databaseconfig');  // ✅ Your DB config
 const router = express.Router();
 
 // 1. CREATE job (POST /jobs)
@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
       }
     }
 
-    sql += ' ORDER BY createdAt ASC';
+    sql += ' ORDER BY createdAt DESC';
     const [jobs] = await pool.execute(sql, params);
     res.json(jobs);
   } catch (error) {
@@ -66,8 +66,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// 4. RUN job (POST /jobs/run/:id) ✅ FIXED
-router.post('/run/:id', async (req, res) => {  // ✅ /run/:id instead of /run-job/:id
+// 4. RUN job (POST /jobs/run-job/:id) ✅ YOUR REQUESTED URL
+router.post('/run-job/:id', async (req, res) => {
   try {
     const jobId = req.params.id;
     
@@ -80,7 +80,7 @@ router.post('/run/:id', async (req, res) => {  // ✅ /run/:id instead of /run-j
     await pool.execute('UPDATE jobs SET status = "running" WHERE id = ?', [jobId]);
     res.json({ message: 'Job started' });
     
-    // Simulate 3s work + webhook ✅ FIXED: 3000ms
+    // Simulate 3s work + webhook ✅ FIXED: 3000ms, YOUR URL
     setTimeout(async () => {
       await pool.execute('UPDATE jobs SET status = "completed" WHERE id = ?', [jobId]);
       

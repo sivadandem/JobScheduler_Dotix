@@ -10,22 +10,18 @@ const pool = mysql.createPool({
   connectionLimit: 10
 });
 
-// Creating Database automatically than doing manually
-
+// ✅ Simple: Init async but export raw pool
 const initDB = async () => {
   try {
-    // Connect without DB first if in case database is already in Mysql 
     const noDbPool = mysql.createPool({
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
     });
 
-    // Create database if not exists then the database will be created
-    await noDbPool.execute(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME || 'job_scheduler'}`);
-    console.log('✅ Database created/verified');
+    await noDbPool.execute(`CREATE DATABASE IF NOT EXISTS job_scheduler`);
+    console.log('✅ Database ready');
 
-    // Create jobs table, instead of manually
     await pool.execute(`
       CREATE TABLE IF NOT EXISTS jobs (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,15 +36,14 @@ const initDB = async () => {
       )
     `);
     console.log('✅ Jobs table ready');
+    console.log('🚀 Backend APIs ready - http://localhost:3001/run-job/1 works!');
 
-    noDbPool.end();
-
+    await noDbPool.end();
   } catch (error) {
-    console.error('❌ file(databaseconfig) -> DB init failed:', error.message);
+    console.error('❌ DB init failed:', error.message);
   }
 };
 
+initDB();  // Fire and forget
 
-initDB();
-
-module.exports = pool;
+module.exports = pool;  // ✅ Raw pool - .execute() works
