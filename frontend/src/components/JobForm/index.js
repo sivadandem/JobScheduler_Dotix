@@ -23,7 +23,6 @@ function JobForm({ onSuccess }) {
     e.preventDefault();
     setError('');
 
-    // Check if payload is empty
     if (!formData.payload.trim()) {
       const confirmEmpty = window.confirm(
         'You have not entered a payload. Do you want to proceed with an empty payload?'

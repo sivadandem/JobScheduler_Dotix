@@ -30,11 +30,10 @@ function App() {
     fetchJobs();
   }, [filters]);
 
-  // ✅ FIXED: Full path /jobs/run-job/:id
   const handleRunJob = async (jobId) => {
     try {
-      await api.post(`/jobs/run-job/${jobId}`);  // ✅ CORRECT FULL PATH!
-      // Auto-refresh via useEffect (filters unchanged)
+      await api.post(`/jobs/run-job/${jobId}`);
+    
     } catch (error) {
       console.error("Run job error:", error);
     }
@@ -66,7 +65,7 @@ function App() {
           <JobTable 
             jobs={jobs} 
             onRun={handleRunJob} 
-            filters={filters}  // ✅ Passes to JobTable
+            filters={filters} 
           />
         )}
       </div>

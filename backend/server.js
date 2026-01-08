@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Mount MySQL router
 app.use('/jobs', jobsRouter);
 
 const PORT = process.env.PORT || 3001;

@@ -1,8 +1,7 @@
 const express = require('express');
-const pool = require('../databaseconfig');  // ✅ Your DB config
+const pool = require('../databaseconfig');
 const router = express.Router();
 
-// 1. CREATE job (POST /jobs)
 router.post('/', async (req, res) => {
   try {
     const { taskName, payload, priority } = req.body;
@@ -23,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 2. LIST jobs (GET /jobs?status=pending&priority=High)
+
 router.get('/', async (req, res) => {
   try {
     const { status, priority } = req.query;
@@ -51,7 +50,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 3. GET single job (GET /jobs/:id)
+
 router.get('/:id', async (req, res) => {
   try {
     const [jobs] = await pool.execute('SELECT * FROM jobs WHERE id = ?', [req.params.id]);
@@ -66,21 +65,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// 4. RUN job (POST /jobs/run-job/:id) ✅ YOUR REQUESTED URL
+
 router.post('/run-job/:id', async (req, res) => {
   try {
     const jobId = req.params.id;
-    
-    // Check exists + pending
     const [jobs] = await pool.execute('SELECT * FROM jobs WHERE id = ?', [jobId]);
     if (jobs.length === 0) return res.status(404).json({ error: 'Job not found' });
     if (jobs[0].status !== 'pending') return res.status(400).json({ error: 'Job already processed' });
     
-    // Start running
+
     await pool.execute('UPDATE jobs SET status = "running" WHERE id = ?', [jobId]);
     res.json({ message: 'Job started' });
     
-    // Simulate 3s work + webhook ✅ FIXED: 3000ms, YOUR URL
     setTimeout(async () => {
       await pool.execute('UPDATE jobs SET status = "completed" WHERE id = ?', [jobId]);
       
@@ -95,7 +91,7 @@ router.post('/run-job/:id', async (req, res) => {
       } catch (e) {
         console.log('Webhook failed:', e.message);
       }
-    }, 3000);  // ✅ 3 seconds
+    }, 3000);
     
   } catch (error) {
     res.status(500).json({ error: error.message });

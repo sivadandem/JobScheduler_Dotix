@@ -10,7 +10,6 @@ const pool = mysql.createPool({
   connectionLimit: 10
 });
 
-// ✅ Simple: Init async but export raw pool
 const initDB = async () => {
   try {
     const noDbPool = mysql.createPool({
@@ -44,6 +43,6 @@ const initDB = async () => {
   }
 };
 
-initDB();  // Fire and forget
+initDB(); 
 
-module.exports = pool;  // ✅ Raw pool - .execute() works
+module.exports = pool;

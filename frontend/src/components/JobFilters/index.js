@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';  // ✅ Import CSS
+import './index.css';
 
 function JobFilters({ filters, jobs, onFilterChange }) {
   const handleStatusChange = (e) => {

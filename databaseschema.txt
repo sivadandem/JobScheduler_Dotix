@@ -1,0 +1,9 @@
+CREATE TABLE jobs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  taskName VARCHAR(255) NOT NULL,
+  payload JSON,
+  priority ENUM('Low','Medium','High') NOT NULL,
+  status ENUM('pending','running','completed') DEFAULT 'pending',
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
