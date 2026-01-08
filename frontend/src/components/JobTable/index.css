@@ -1,0 +1,117 @@
+.job-table-container {
+  overflow-x: auto;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.job-table thead tr {
+  background-color: #f8f9fa;
+}
+
+.job-table th {
+  padding: 1rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.job-table th:last-child {
+  text-align: center;
+}
+
+.job-table td {
+  padding: 1rem 1rem;
+}
+
+.job-table tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.job-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.job-table .id-cell {
+  font-size: 0.875rem;
+  color: #374151;
+  font-family: ui-monospace, monospace;
+}
+
+.job-table .task-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1f2937;
+  max-width: 250px;
+}
+
+.job-table .date-cell {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.job-table .badge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.job-table .status-badge {
+  padding: 0.375rem 0.75rem;
+}
+
+.job-table .run-btn {
+  padding: 0.5rem 1.25rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.job-table .run-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.job-table .run-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.job-table .status-text {
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.empty-state {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 0.875rem;
+}
