@@ -1,0 +1,25 @@
+{
+      "pdf quantity": 250,
+      "subject": "project documentation",
+      "estimatedTime": "5 minutes"
+    }
+
+
+{
+    "taskName": "Send Transactional Emails",
+    "payload": {
+      "emails": 250,
+      "subject": "Account Security Alert",
+      "estimatedTime": "5 minutes"
+    },
+    "priority": "Low"
+  }
+{
+    "taskName": "Send project documentation",
+    "payload": {
+      "pdf": 2,
+      "subject": "Project Documentation",
+      "estimatedTime": "5 minutes"
+    },
+    "priority": "Medium"
+  }

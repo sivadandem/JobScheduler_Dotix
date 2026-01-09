@@ -443,12 +443,23 @@ Frontend calls <code>GET /jobs/:id</code> and displays formatted JSON payload an
 
 
 <h2>Screenshots</h2>
-<ul>
-  <li><code>screenshots/dashboard.png</code> – Job table with filters and statuses</li>
-  <li><code>screenshots/create-job.png</code> – Create job form</li>
-  <li><code>screenshots/detail-view.png</code> – Job detail view with formatted JSON</li>
-  <li><code>screenshots/webhook.png</code> – webhook.site POST payload view</li>
-</ul>
+
+## Create Job API (POST /jobs)
+![Create job form submission](images/i1.png)
+
+## List Jobs API (GET /jobs)
+![Job table with filters and statuses](images/i2.png)
+
+## Run Job API (POST /jobs/run-job/:id)
+![Job run with run](images/i3.png)
+## Webhook triggering
+![Job run with webhook success](images/i6.png)
+
+## Priority Filter (GET /jobs?priority=...)
+![Job table with filters and statuses](images/i5.png)
+![Job table with filters and statuses](images/i4.png)
+
+
 
 <hr />
 
@@ -484,7 +495,7 @@ All AI-generated content was reviewed, understood, and modified before final use
 <h3>Scope of AI Usage</h3>
 <ul>
   <li>Confirmed understanding of assignment requirements</li>
-  <li>Suggested example code and documentation structure</li>
+  <li>Suggested example code and documentation structure,CSS for the index.js files in components folder</li>
   <li>Final implementation, database schema, and testing were done manually</li>
 </ul>
 
