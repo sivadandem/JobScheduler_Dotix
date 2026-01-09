@@ -276,11 +276,9 @@ root-project/
 │   ├── server.js
 │   ├── .env
 │   └── package.json
-├── screenshots/
-│   ├── dashboard.png
-│   ├── create-job.png
-│   ├── webhook.png
-│   └── detail-view.png
+├── images/
+│   ├── i1.png
+│   ├── i2.png
 ├── package.json        # Root scripts: install:all, dev
 └── README.md
 ```
